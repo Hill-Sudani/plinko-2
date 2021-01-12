@@ -86,7 +86,29 @@ function draw() {
      
      plinkos[i].display();
      
-   }
+  }
+
+  if(particle.body.position.x < 300)
+  {
+    score = score +500;
+    particle = null;
+    if(count>=5) gamestate = "end";
+  }
+  
+  else if(particle.body.position.x < 600 && particle.body.position.x > 301)
+  {
+    score+= 100;
+    particle = null;
+    if(count>=5) gamestate = "end";
+  }
+  
+  else if(particle.body.position.x < 900 && particle.body.position.x > 601)
+  {
+    sccor += 200;
+    particle = null;
+    if(count>=5) gamestate = "end";
+  }
+  
    for (var k = 0; k < divisions.length; k++) {
      
      divisions[k].display();
@@ -97,6 +119,7 @@ function mousePressed()
 {
   if(gamestate !== "end" )
   {
+    count++;
     particle = new Particle(mouseX,10,10,10);
     particle.display();
   }
