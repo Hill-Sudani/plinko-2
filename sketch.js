@@ -60,7 +60,6 @@ function setup() {
 
 function draw() {
   background("black");
-  Engine.update(engine);
 
   //mousePressed();
 
@@ -80,6 +79,11 @@ function draw() {
   text("200",750,750);
 
   ground.display();
+  Engine.update(engine);
+  
+  if(gameState === 'end') {
+    textSize(100)
+    text('GAME OVER', 150 , 250)
 
   
    for (var i = 0; i < plinkos.length; i++) {
@@ -87,6 +91,8 @@ function draw() {
      plinkos[i].display();
      
   }
+  if(particle !== null){
+    particle.display()
 
   if(particle.body.position.x < 300)
   {
@@ -107,6 +113,7 @@ function draw() {
     sccor += 200;
     particle = null;
     if(count>=5) gamestate = "end";
+  }
   }
   
    for (var k = 0; k < divisions.length; k++) {
